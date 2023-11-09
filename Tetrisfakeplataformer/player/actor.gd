@@ -65,7 +65,7 @@ var _ladder
 func _physics_process(delta):
 	_direction = _get_direction()
 	manage_animations()
-	print(_actual_state)
+#	print(_actual_state)
 	match _actual_state:
 		STATE_STAND:
 			stand_state(delta)
@@ -92,6 +92,12 @@ func _physics_process(delta):
 	velocity.y += gravity * delta * _g_multiplier
 	
 	move_and_slide()
+	
+	for obj in get_slide_collision_count():
+		var collider_obj = get_slide_collision(obj)
+		if collider_obj.get_collider() is RigidBody2D:
+			collider_obj.get_collider().apply_central_impulse(-collider_obj.get_normal() * 80)
+	
 #	velocity = move_and_slide_with_snap(velocity, snap,Vector2.UP, true, 4 , deg_to_rad(45))
 
 
