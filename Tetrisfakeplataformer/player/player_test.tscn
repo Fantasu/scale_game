@@ -9,6 +9,7 @@ friction = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_mwjlg"]
 
 [node name="PlayerTest" type="RigidBody2D"]
+mass = 13.87
 physics_material_override = SubResource("PhysicsMaterial_b7mpx")
 lock_rotation = true
 script = ExtResource("1_8nx8k")
